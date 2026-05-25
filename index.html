@@ -3,569 +3,412 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OPVN Niger</title>
-<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600;700&amp;family=Sora:wght@300;400;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<title>OPVN Niger5</title>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ══ DESIGN SYSTEM — miroir exact du thème mobile ══ */
+/* ══════════════════════════════════════════
+   DESIGN SYSTEM — Miroir exact du thème app
+══════════════════════════════════════════ */
 :root {
-  /* Backgrounds — identiques à l'app */
-  --bg:         #0A0F1E;
-  --bg2:        #1C1C1E;
-  --bg3:        #2C2C2E;
-
-  /* Glass — identiques à l'app */
-  --glass:      rgba(255,255,255,0.10);
-  --glass-b:    rgba(255,255,255,0.18);
-
-  /* Labels */
-  --label:      #FFFFFF;
-  --label-2:    rgba(255,255,255,0.60);
-  --label-3:    rgba(255,255,255,0.30);
-
-  /* Couleurs système iOS */
-  --blue:       #007AFF;
-  --green:      #34C759;
-  --red:        #FF3B30;
-  --orange:     #FF9500;
-  --yellow:     #FFCC00;
-  --purple:     #AF52DE;
-  --pink:       #FF2D55;
-  --teal:       #5AC8FA;
-
-  /* Radius */
-  --r-sm: 8px;
-  --r-md: 12px;
-  --r-lg: 16px;
-  --r-xl: 20px;
-  --r-2xl:28px;
-  --r-full:9999px;
+  --bg:      #0A0F1E;
+  --bg2:     #1C1C1E;
+  --bg3:     #2C2C2E;
+  --glass:   rgba(255,255,255,0.08);
+  --glass-b: rgba(255,255,255,0.14);
+  --label:   #FFFFFF;
+  --label-2: rgba(255,255,255,0.60);
+  --label-3: rgba(255,255,255,0.30);
+  --blue:    #007AFF;
+  --green:   #34C759;
+  --red:     #FF3B30;
+  --orange:  #FF9500;
+  --purple:  #AF52DE;
+  --pink:    #FF2D55;
+  --teal:    #5AC8FA;
+  --yellow:  #FFCC00;
 }
 
-*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; }
-
-body {
-  font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--label);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Sora',system-ui,sans-serif;
+  background:var(--bg);color:var(--label);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
 
-/* Grain de texture subtil */
-body::before {
-  content:'';
-  position:fixed; inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events:none; z-index:999; opacity:0.5;
+/* Solar Icons — couleurs duotone */
+iconify-icon{
+  --icon-primary:   var(--blue);
+  --icon-secondary: rgba(0,122,255,0.25);
 }
+iconify-icon.ic-green  { --icon-primary:var(--green);  --icon-secondary:rgba(52,199,89,0.22); }
+iconify-icon.ic-orange { --icon-primary:var(--orange); --icon-secondary:rgba(255,149,0,0.22); }
+iconify-icon.ic-purple { --icon-primary:var(--purple); --icon-secondary:rgba(175,82,222,0.22); }
+iconify-icon.ic-teal   { --icon-primary:var(--teal);   --icon-secondary:rgba(90,200,250,0.22); }
+iconify-icon.ic-pink   { --icon-primary:var(--pink);   --icon-secondary:rgba(255,45,85,0.22); }
+iconify-icon.ic-yellow { --icon-primary:var(--yellow); --icon-secondary:rgba(255,204,0,0.22); }
+iconify-icon.ic-red    { --icon-primary:var(--red);    --icon-secondary:rgba(255,59,48,0.22); }
+iconify-icon.ic-white  { --icon-primary:#fff;           --icon-secondary:rgba(255,255,255,0.25); }
 
-/* ══ UTILITAIRES ══ */
-.mono { font-family:'JetBrains Mono', monospace; }
-.label-tag {
-  font-family:'JetBrains Mono', monospace;
-  font-size:0.68rem;
-  letter-spacing:0.22em;
-  color:var(--blue);
-  text-transform:uppercase;
-  margin-bottom:0.9rem;
-  display:block;
+/* Utilitaires */
+.mono{font-family:'JetBrains Mono',monospace}
+.label-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  letter-spacing:.22em;color:var(--blue);text-transform:uppercase;
+  margin-bottom:.8rem;display:flex;align-items:center;gap:8px;
 }
-.divider {
-  width:48px; height:3px;
-  background:linear-gradient(90deg, var(--blue), var(--teal));
-  border-radius:var(--r-full);
-  margin:1.2rem 0 2rem;
+.divider{
+  width:44px;height:3px;border-radius:999px;
+  background:linear-gradient(90deg,var(--blue),var(--teal));
+  margin:1rem 0 2rem;
 }
-.glass-card {
-  background:var(--glass);
-  border:1px solid var(--glass-b);
-  border-radius:var(--r-2xl);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
+.glass-card{
+  background:var(--glass);border:1px solid var(--glass-b);
+  border-radius:20px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
 }
-.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease, transform 0.65s ease; }
-.reveal.in { opacity:1; transform:none; }
-.d1{transition-delay:0.1s} .d2{transition-delay:0.18s} .d3{transition-delay:0.26s} .d4{transition-delay:0.34s}
+section{padding:7rem 6vw}
+.h2{
+  font-size:clamp(1.9rem,3.5vw,3rem);font-weight:800;
+  line-height:1.08;letter-spacing:-.03em;margin-bottom:.5rem;
+}
+.h2 em{font-style:normal;color:var(--blue)}
+.sub{font-size:.95rem;color:var(--label-2);line-height:1.7;max-width:520px;margin-bottom:2.5rem}
 
-section { padding:7rem 6vw; }
+/* Reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.18s}.d3{transition-delay:.26s}.d4{transition-delay:.34s}
 
 /* ══ NAV ══ */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
   padding:0 6vw;
-  background:rgba(10,15,30,0.75);
-  backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
+  background:rgba(10,15,30,.8);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   border-bottom:1px solid var(--glass-b);
+  transition:background .3s;
 }
-.nav-inner {
-  display:flex; align-items:center; justify-content:space-between;
-  height:60px;
+.nav-i{display:flex;align-items:center;justify-content:space-between;height:62px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-emblem{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(135deg,var(--blue),#0040FF);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(0,122,255,.45);
 }
-.nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
-.nav-icon {
-  width:36px; height:36px; border-radius:10px;
-  background:linear-gradient(135deg, var(--blue), #0040FF);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.1rem;
-  box-shadow:0 4px 16px rgba(0,122,255,0.4);
+.nav-name{font-size:1rem;font-weight:700;color:var(--label);letter-spacing:-.02em}
+.nav-name span{color:var(--blue)}
+.nav-links{display:flex;gap:1.8rem}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--label-2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--label)}
+.nav-pill{
+  font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.15em;
+  color:var(--blue);border:1px solid rgba(0,122,255,.3);
+  padding:5px 14px;border-radius:999px;text-transform:uppercase;
 }
-.nav-name {
-  font-size:1rem; font-weight:700; color:var(--label);
-  letter-spacing:-0.02em;
-}
-.nav-name span { color:var(--blue); }
-.nav-pill {
-  font-family:'JetBrains Mono', monospace;
-  font-size:0.65rem;
-  letter-spacing:0.15em;
-  color:var(--blue);
-  border:1px solid rgba(0,122,255,0.35);
-  padding:5px 14px;
-  border-radius:var(--r-full);
-  text-transform:uppercase;
-}
-.nav-links { display:flex; gap:1.8rem; }
-.nav-links a {
-  font-size:0.82rem; font-weight:500; color:var(--label-2);
-  text-decoration:none; transition:color 0.2s;
-}
-.nav-links a:hover { color:var(--label); }
 
 /* ══ HERO ══ */
-.hero {
-  min-height:100vh;
-  display:flex; flex-direction:column; justify-content:center;
-  padding:100px 6vw 6rem;
-  position:relative; overflow:hidden;
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:100px 6vw 5rem;position:relative;overflow:hidden;
 }
-
-/* Grille iOS subtile */
-.hero-grid {
-  position:absolute; inset:0;
+.hero-grid{
+  position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(0,122,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,122,255,0.04) 1px, transparent 1px);
-  background-size:64px 64px;
+    linear-gradient(rgba(0,122,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,122,255,.04) 1px,transparent 1px);
+  background-size:60px 60px;
 }
+.orb1{
+  position:absolute;top:-12%;right:-8%;width:620px;height:620px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,122,255,.17) 0%,transparent 68%);
+  animation:fl1 11s ease-in-out infinite;
+}
+.orb2{
+  position:absolute;bottom:-18%;left:-10%;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(52,199,89,.11) 0%,transparent 68%);
+  animation:fl2 15s ease-in-out infinite;
+}
+@keyframes fl1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-28px,18px) scale(1.09)}}
+@keyframes fl2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(22px,-22px) scale(1.06)}}
 
-/* Orbe bleu principal */
-.hero-orb-1 {
-  position:absolute; top:-10%; right:-5%;
-  width:600px; height:600px; border-radius:50%;
-  background:radial-gradient(circle, rgba(0,122,255,0.18) 0%, transparent 65%);
-  animation:float1 10s ease-in-out infinite;
-}
-/* Orbe vert secondaire */
-.hero-orb-2 {
-  position:absolute; bottom:-15%; left:-8%;
-  width:450px; height:450px; border-radius:50%;
-  background:radial-gradient(circle, rgba(52,199,89,0.12) 0%, transparent 65%);
-  animation:float2 14s ease-in-out infinite;
-}
-@keyframes float1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-30px,20px) scale(1.08)} }
-@keyframes float2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(20px,-25px) scale(1.05)} }
+.hero-in{position:relative;z-index:2;max-width:800px}
 
-.hero-inner { position:relative; z-index:2; max-width:780px; }
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,122,255,.11);border:1px solid rgba(0,122,255,.26);
+  border-radius:999px;padding:6px 16px 6px 10px;
+  font-size:.78rem;font-weight:500;color:var(--teal);
+  margin-bottom:1.8rem;animation:fadeUp .7s .1s both;
+}
+.live-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 8px var(--green);animation:blink 2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
 
-.hero-badge {
-  display:inline-flex; align-items:center; gap:8px;
-  background:rgba(0,122,255,0.12);
-  border:1px solid rgba(0,122,255,0.28);
-  border-radius:var(--r-full);
-  padding:6px 16px 6px 10px;
-  font-size:0.78rem; font-weight:500;
-  color:var(--teal);
-  margin-bottom:1.8rem;
-  animation:fadeUp 0.7s 0.1s both;
+.hero-title{
+  font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;
+  line-height:1.04;letter-spacing:-.035em;margin-bottom:1.4rem;
+  animation:fadeUp .7s .2s both;
 }
-.hero-badge-dot {
-  width:8px; height:8px; border-radius:50%;
-  background:var(--green);
-  box-shadow:0 0 8px var(--green);
-  animation:blink 2s ease-in-out infinite;
+.hero-title .accent{color:var(--blue)}
+.hero-title .stroke{
+  -webkit-text-stroke:2px rgba(0,122,255,.45);color:transparent;
 }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.hero-sub{
+  font-size:1.08rem;font-weight:300;color:var(--label-2);
+  line-height:1.72;max-width:540px;margin-bottom:2.4rem;
+  animation:fadeUp .7s .3s both;
+}
+.cta-group{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .7s .4s both}
+.btn-blue{
+  background:var(--blue);color:#fff;font-weight:600;font-size:.92rem;
+  padding:13px 28px;border-radius:999px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 6px 24px rgba(0,122,255,.45);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 10px 34px rgba(0,122,255,.6)}
+.btn-ghost{
+  border:1px solid var(--glass-b);background:var(--glass);color:var(--label);
+  font-weight:500;font-size:.92rem;padding:13px 28px;border-radius:999px;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  backdrop-filter:blur(10px);transition:border-color .2s,background .2s;
+}
+.btn-ghost:hover{border-color:rgba(0,122,255,.5);background:rgba(0,122,255,.08)}
 
-.hero-title {
-  font-size:clamp(2.8rem, 6.5vw, 6rem);
-  font-weight:800;
-  line-height:1.04;
-  letter-spacing:-0.03em;
-  margin-bottom:1.5rem;
-  animation:fadeUp 0.7s 0.2s both;
-}
-.hero-title .accent { color:var(--blue); }
-.hero-title .outline {
-  -webkit-text-stroke:2px rgba(0,122,255,0.5);
-  color:transparent;
-}
-
-.hero-sub {
-  font-size:1.1rem; font-weight:300; color:var(--label-2);
-  line-height:1.7; max-width:520px; margin-bottom:2.5rem;
-  animation:fadeUp 0.7s 0.3s both;
-}
-
-.hero-ctas {
-  display:flex; gap:12px; flex-wrap:wrap;
-  animation:fadeUp 0.7s 0.4s both;
-}
-.btn-blue {
-  background:var(--blue);
-  color:#fff; font-weight:600; font-size:0.92rem;
-  padding:13px 28px; border-radius:var(--r-full);
-  text-decoration:none; display:inline-flex; align-items:center; gap:8px;
-  box-shadow:0 6px 24px rgba(0,122,255,0.45);
-  transition:transform 0.2s, box-shadow 0.2s;
-}
-.btn-blue:hover { transform:translateY(-2px); box-shadow:0 10px 32px rgba(0,122,255,0.6); }
-.btn-ghost {
-  border:1px solid var(--glass-b);
-  background:var(--glass);
-  color:var(--label); font-weight:500; font-size:0.92rem;
-  padding:13px 28px; border-radius:var(--r-full);
-  text-decoration:none; display:inline-flex; align-items:center; gap:8px;
-  backdrop-filter:blur(10px);
-  transition:border-color 0.2s, background 0.2s;
-}
-.btn-ghost:hover { border-color:rgba(0,122,255,0.5); background:rgba(0,122,255,0.08); }
-
-.hero-stats {
-  display:flex; gap:2.5rem; flex-wrap:wrap;
-  margin-top:4rem; padding-top:2rem;
+.hero-stats{
+  display:flex;gap:2.5rem;flex-wrap:wrap;
+  margin-top:3.5rem;padding-top:2rem;
   border-top:1px solid var(--glass-b);
-  animation:fadeUp 0.7s 0.5s both;
+  animation:fadeUp .7s .5s both;
 }
-.hstat-num {
-  font-size:2rem; font-weight:800; letter-spacing:-0.03em;
-  background:linear-gradient(135deg, var(--label), var(--teal));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-clip:text;
+.hs-num{
+  font-size:2rem;font-weight:800;letter-spacing:-.04em;
+  background:linear-gradient(135deg,#fff,var(--teal));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.hstat-lbl { font-size:0.75rem; color:var(--label-3); margin-top:2px; font-weight:400; }
+.hs-lbl{font-size:.74rem;color:var(--label-3);margin-top:2px}
 
-@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
-/* ══ PROBLÈME / SOLUTION ══ */
-.pain-wrap {
-  background:var(--bg2);
-  border-top:1px solid var(--glass-b);
-  border-bottom:1px solid var(--glass-b);
-}
-.two-col {
-  display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;
-}
-.section-h2 {
-  font-size:clamp(1.9rem,3.5vw,3rem);
-  font-weight:800; line-height:1.1; letter-spacing:-0.03em;
-  margin-bottom:0.5rem;
-}
-.section-h2 em { font-style:normal; color:var(--blue); }
-.section-p { font-size:0.95rem; color:var(--label-2); line-height:1.7; max-width:520px; margin-bottom:2.5rem; }
+/* ══ SECTION PROBLÈME ══ */
+.pain-sec{background:var(--bg2);border-top:1px solid var(--glass-b);border-bottom:1px solid var(--glass-b)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 
-/* Pain items */
-.pain-list { display:flex; flex-direction:column; gap:10px; }
-.pain-item {
-  display:flex; align-items:flex-start; gap:12px;
-  padding:14px 16px; border-radius:var(--r-lg);
-  background:rgba(255,59,48,0.06);
-  border:1px solid rgba(255,59,48,0.12);
+.pain-list{display:flex;flex-direction:column;gap:10px}
+.pain-item{
+  display:flex;align-items:flex-start;gap:12px;padding:14px 16px;
+  border-radius:14px;background:rgba(255,59,48,.06);border:1px solid rgba(255,59,48,.12);
 }
-.pain-dot {
-  width:8px; height:8px; border-radius:50%;
-  background:var(--red); flex-shrink:0; margin-top:5px;
-}
-.pain-item strong { display:block; font-size:0.88rem; margin-bottom:2px; }
-.pain-item span   { font-size:0.78rem; color:var(--label-2); line-height:1.5; }
+.pain-item strong{display:block;font-size:.88rem;margin-bottom:2px}
+.pain-item span{font-size:.78rem;color:var(--label-2);line-height:1.5}
 
-/* Solution items */
-.sol-list { display:flex; flex-direction:column; gap:14px; }
-.sol-item { display:flex; align-items:flex-start; gap:14px; }
-.sol-bubble {
-  width:34px; height:34px; border-radius:50%;
-  background:rgba(0,122,255,0.15); border:1px solid rgba(0,122,255,0.3);
-  color:var(--blue); font-size:0.78rem; font-weight:700; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  font-family:'JetBrains Mono', monospace;
+.sol-list{display:flex;flex-direction:column;gap:14px}
+.sol-item{display:flex;align-items:flex-start;gap:12px}
+.sol-num{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;margin-top:2px;
+  background:rgba(0,122,255,.14);border:1px solid rgba(0,122,255,.28);
+  color:var(--blue);font-size:.75rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;
 }
-.sol-item strong { display:block; font-size:0.9rem; margin-bottom:3px; }
-.sol-item span   { font-size:0.8rem; color:var(--label-2); line-height:1.5; }
+.sol-item strong{display:block;font-size:.9rem;margin-bottom:3px}
+.sol-item span{font-size:.8rem;color:var(--label-2);line-height:1.55}
 
-/* ══ FONCTIONNALITÉS ══ */
-.feat-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+/* ══ FEATURES ══ */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fc{
+  background:var(--bg2);border:1px solid var(--glass-b);border-radius:20px;
+  padding:1.8rem;transition:transform .25s,border-color .25s,box-shadow .25s;
 }
-.feat-card {
-  background:var(--bg2);
-  border:1px solid var(--glass-b);
-  border-radius:var(--r-2xl);
-  padding:1.8rem;
-  transition:transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-  cursor:default;
+.fc:hover{transform:translateY(-4px);border-color:rgba(0,122,255,.4);box-shadow:0 16px 44px rgba(0,0,0,.3)}
+.fc.wide{grid-column:span 2}
+.fc-bar{width:38px;height:3px;border-radius:999px;margin-bottom:1.2rem;background:var(--blue)}
+.fc.c-green  .fc-bar{background:var(--green)}
+.fc.c-orange .fc-bar{background:var(--orange)}
+.fc.c-purple .fc-bar{background:var(--purple)}
+.fc.c-teal   .fc-bar{background:var(--teal)}
+.fc.c-pink   .fc-bar{background:var(--pink)}
+.fc.c-yellow .fc-bar{background:var(--yellow)}
+.fc.c-red    .fc-bar{background:var(--red)}
+.fc-icon{margin-bottom:.9rem;display:block}
+.fc-title{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em}
+.fc-desc{font-size:.8rem;color:var(--label-2);line-height:1.6}
+.fc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
+.chip{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;
+  padding:3px 10px;border-radius:999px;border:1px solid;letter-spacing:.04em;
 }
-.feat-card:hover {
-  transform:translateY(-4px);
-  border-color:rgba(0,122,255,0.4);
-  box-shadow:0 16px 40px rgba(0,0,0,0.3);
-}
-.feat-card.wide { grid-column:span 2; }
-.feat-card.tall { }
-
-/* Trait coloré en haut */
-.feat-card::before {
-  content:''; display:block; width:36px; height:3px;
-  border-radius:var(--r-full); margin-bottom:1.2rem;
-  background:var(--blue);
-}
-.feat-card.c-green::before  { background:var(--green); }
-.feat-card.c-orange::before { background:var(--orange); }
-.feat-card.c-purple::before { background:var(--purple); }
-.feat-card.c-teal::before   { background:var(--teal); }
-.feat-card.c-pink::before   { background:var(--pink); }
-.feat-card.c-yellow::before { background:var(--yellow); }
-.feat-card.c-red::before    { background:var(--red); }
-
-.feat-emoji { font-size:1.8rem; display:block; margin-bottom:0.8rem; }
-.feat-title { font-size:1.05rem; font-weight:700; margin-bottom:0.5rem; letter-spacing:-0.02em; }
-.feat-desc  { font-size:0.8rem; color:var(--label-2); line-height:1.6; }
-.feat-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:1rem; }
-.chip {
-  font-family:'JetBrains Mono', monospace;
-  font-size:0.62rem; padding:3px 10px;
-  border-radius:var(--r-full); border:1px solid;
-  letter-spacing:0.04em;
-}
-.chip.blue   { border-color:rgba(0,122,255,0.4);   color:var(--teal); }
-.chip.green  { border-color:rgba(52,199,89,0.4);   color:var(--green); }
-.chip.orange { border-color:rgba(255,149,0,0.4);   color:var(--orange); }
-.chip.purple { border-color:rgba(175,82,222,0.4);  color:var(--purple); }
+.chip.b{border-color:rgba(0,122,255,.4);color:var(--teal)}
+.chip.g{border-color:rgba(52,199,89,.4);color:var(--green)}
+.chip.o{border-color:rgba(255,149,0,.4);color:var(--orange)}
+.chip.p{border-color:rgba(175,82,222,.4);color:var(--purple)}
 
 /* ══ PARCOURS ══ */
-.journey-bg { background:var(--bg2); }
-.steps-row {
-  display:grid; grid-template-columns:repeat(5,1fr);
-  gap:0; position:relative; margin-top:3rem;
+.journey-bg{background:var(--bg2)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:3rem}
+.steps::before{
+  content:'';position:absolute;top:42px;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--teal),var(--green));
 }
-.steps-row::before {
-  content:''; position:absolute;
-  top:42px; left:10%; right:10%; height:2px;
-  background:linear-gradient(90deg, var(--blue), var(--teal), var(--green));
+.step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 6px;position:relative;z-index:1}
+.step-orb{
+  width:84px;height:84px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--glass-b);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;box-shadow:0 0 0 6px rgba(0,122,255,.05);
+  transition:border-color .25s,box-shadow .25s,transform .25s;
 }
-.step {
-  display:flex; flex-direction:column; align-items:center;
-  text-align:center; padding:0 6px; position:relative; z-index:1;
-}
-.step-orb {
-  width:84px; height:84px; border-radius:50%;
-  background:var(--bg); border:2px solid var(--glass-b);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.7rem; margin-bottom:1rem;
-  box-shadow:0 0 0 6px rgba(0,122,255,0.06);
-  transition:border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-}
-.step:hover .step-orb {
-  border-color:var(--blue);
-  box-shadow:0 0 0 8px rgba(0,122,255,0.1), 0 8px 28px rgba(0,122,255,0.3);
-  transform:scale(1.06);
-}
-.step-n { font-family:'JetBrains Mono', monospace; font-size:0.62rem; color:var(--blue); letter-spacing:0.18em; margin-bottom:4px; }
-.step-t { font-size:0.9rem; font-weight:700; margin-bottom:4px; }
-.step-d { font-size:0.72rem; color:var(--label-2); line-height:1.5; }
+.step:hover .step-orb{border-color:var(--blue);box-shadow:0 0 0 8px rgba(0,122,255,.1),0 8px 28px rgba(0,122,255,.3);transform:scale(1.06)}
+.step-n{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--blue);letter-spacing:.18em;margin-bottom:4px}
+.step-t{font-size:.9rem;font-weight:700;margin-bottom:4px}
+.step-d{font-size:.72rem;color:var(--label-2);line-height:1.5}
 
 /* ══ HABITUDES ══ */
-.habits-two { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+.habits-two{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.timeline{position:relative}
+.timeline::before{
+  content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--blue),var(--teal),var(--green),var(--blue));
+}
+.t-item{display:flex;gap:1.2rem;padding:1rem 0}
+.t-orb{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:var(--bg);border:2px solid var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;transition:transform .2s,box-shadow .2s;
+}
+.t-item:hover .t-orb{transform:scale(1.1);box-shadow:0 0 0 6px rgba(0,122,255,.12)}
+.t-time{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--blue);letter-spacing:.1em;margin-bottom:3px}
+.t-name{font-size:.9rem;font-weight:600;margin-bottom:4px}
+.t-old{font-size:.75rem;color:rgba(255,59,48,.65);text-decoration:line-through}
+.t-new{font-size:.75rem;color:var(--green)}
+.t-arr{font-size:.7rem;color:var(--label-3);margin:0 4px}
 
-/* Timeline */
-.timeline { position:relative; }
-.timeline::before {
-  content:''; position:absolute;
-  left:20px; top:0; bottom:0; width:2px;
-  background:linear-gradient(180deg, var(--blue), var(--teal), var(--green), var(--blue));
+.val-stack{display:flex;flex-direction:column;gap:12px}
+.val-card{
+  display:flex;align-items:flex-start;gap:14px;
+  background:var(--bg2);border:1px solid var(--glass-b);border-radius:18px;padding:1.2rem;
+  transition:border-color .2s,transform .2s;
 }
-.t-item { display:flex; gap:1.2rem; padding:1rem 0; }
-.t-orb {
-  width:42px; height:42px; border-radius:50%;
-  background:var(--bg); border:2px solid var(--blue);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1rem; flex-shrink:0; position:relative; z-index:1;
-  transition:transform 0.2s, box-shadow 0.2s;
-}
-.t-item:hover .t-orb {
-  transform:scale(1.1);
-  box-shadow:0 0 0 6px rgba(0,122,255,0.12);
-}
-.t-time { font-family:'JetBrains Mono', monospace; font-size:0.65rem; color:var(--blue); letter-spacing:0.1em; margin-bottom:3px; }
-.t-name { font-size:0.9rem; font-weight:600; margin-bottom:4px; }
-.t-old  { font-size:0.75rem; color:rgba(255,59,48,0.65); text-decoration:line-through; }
-.t-new  { font-size:0.75rem; color:var(--green); }
-.t-arr  { font-size:0.7rem; color:var(--label-3); margin:0 5px; }
-
-/* Value cards */
-.val-stack { display:flex; flex-direction:column; gap:12px; }
-.val-card {
-  display:flex; align-items:flex-start; gap:14px;
-  background:var(--bg2); border:1px solid var(--glass-b);
-  border-radius:var(--r-xl); padding:1.2rem;
-  transition:border-color 0.2s, transform 0.2s;
-}
-.val-card:hover { border-color:rgba(0,122,255,0.35); transform:translateX(4px); }
-.val-icon {
-  width:42px; height:42px; border-radius:var(--r-md);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.2rem; flex-shrink:0;
-}
-.vi-blue   { background:rgba(0,122,255,0.15); }
-.vi-green  { background:rgba(52,199,89,0.15); }
-.vi-orange { background:rgba(255,149,0,0.15); }
-.vi-purple { background:rgba(175,82,222,0.15); }
-.vi-teal   { background:rgba(90,200,250,0.15); }
-.val-title { font-size:0.9rem; font-weight:600; margin-bottom:3px; }
-.val-desc  { font-size:0.78rem; color:var(--label-2); line-height:1.5; }
+.val-card:hover{border-color:rgba(0,122,255,.35);transform:translateX(4px)}
+.val-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.vi-b{background:rgba(0,122,255,.14)} .vi-g{background:rgba(52,199,89,.14)}
+.vi-o{background:rgba(255,149,0,.14)} .vi-p{background:rgba(175,82,222,.14)}
+.vi-t{background:rgba(90,200,250,.14)}
+.val-title{font-size:.9rem;font-weight:600;margin-bottom:3px}
+.val-desc{font-size:.78rem;color:var(--label-2);line-height:1.5}
 
 /* ══ MODÈLE ÉCONOMIQUE ══ */
-.eco-bg { background:var(--bg2); }
-
-.plans-grid {
-  display:grid; grid-template-columns:repeat(3,1fr);
-  gap:14px; margin-bottom:4rem;
+.eco-bg{background:var(--bg2)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:4rem}
+.plan{
+  background:var(--bg3);border:1px solid var(--glass-b);border-radius:22px;
+  padding:2rem 1.6rem;position:relative;overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
 }
-.plan {
-  background:var(--bg3); border:1px solid var(--glass-b);
-  border-radius:var(--r-2xl); padding:2rem 1.6rem;
-  position:relative; overflow:hidden;
-  transition:transform 0.25s, box-shadow 0.25s;
-}
-.plan:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(0,0,0,0.35); }
-.plan.featured {
-  background:linear-gradient(145deg, rgba(0,122,255,0.14), var(--bg3));
-  border-color:rgba(0,122,255,0.45);
-  box-shadow:0 0 0 1px rgba(0,122,255,0.2), 0 12px 40px rgba(0,122,255,0.15);
+.plan:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.plan.star{
+  background:linear-gradient(145deg,rgba(0,122,255,.13),var(--bg3));
+  border-color:rgba(0,122,255,.42);
+  box-shadow:0 0 0 1px rgba(0,122,255,.18),0 12px 40px rgba(0,122,255,.14);
   transform:scale(1.02);
 }
-.plan.featured:hover { transform:scale(1.02) translateY(-5px); }
-.plan-badge {
-  position:absolute; top:1.2rem; right:1.2rem;
-  background:var(--blue); color:#fff;
-  font-family:'JetBrains Mono', monospace;
-  font-size:0.62rem; letter-spacing:0.1em;
-  padding:3px 10px; border-radius:var(--r-full);
+.plan.star:hover{transform:scale(1.02) translateY(-5px)}
+.plan-badge{
+  position:absolute;top:1.2rem;right:1.2rem;
+  background:var(--blue);color:#fff;
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;
+  padding:3px 10px;border-radius:999px;
 }
-.plan-icon { font-size:1.8rem; margin-bottom:0.9rem; display:block; }
-.plan-name { font-size:1.3rem; font-weight:800; letter-spacing:-0.02em; margin-bottom:0.2rem; }
-.plan-who  { font-family:'JetBrains Mono', monospace; font-size:0.68rem; color:var(--label-3); letter-spacing:0.06em; margin-bottom:1.2rem; }
-.plan-price {
-  font-size:2.4rem; font-weight:800; letter-spacing:-0.04em;
-  color:var(--blue); margin-bottom:0.15rem;
-}
-.plan-price sup { font-size:1rem; vertical-align:top; margin-top:8px; display:inline-block; }
-.plan-price sub { font-size:0.75rem; color:var(--label-2); font-weight:400; }
-.plan-freq { font-family:'JetBrains Mono', monospace; font-size:0.68rem; color:var(--label-3); margin-bottom:1.5rem; }
-.plan-ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
-.plan-ul li { display:flex; align-items:flex-start; gap:8px; font-size:0.82rem; color:rgba(255,255,255,0.72); }
-.plan-ul li::before { content:'✓'; color:var(--green); font-weight:700; flex-shrink:0; font-size:0.82rem; }
-.plan-ul li.off { color:var(--label-3); }
-.plan-ul li.off::before { content:'—'; color:var(--label-3); }
+.plan-icon{margin-bottom:.9rem;display:block}
+.plan-name{font-size:1.3rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.2rem}
+.plan-who{font-family:'JetBrains Mono',monospace;font-size:.67rem;color:var(--label-3);letter-spacing:.06em;margin-bottom:1.2rem}
+.plan-price{font-size:2.4rem;font-weight:800;letter-spacing:-.04em;color:var(--blue);margin-bottom:.15rem}
+.plan-price sup{font-size:1rem;vertical-align:top;margin-top:8px;display:inline-block}
+.plan-price sub{font-size:.75rem;color:var(--label-2);font-weight:400}
+.plan-freq{font-family:'JetBrains Mono',monospace;font-size:.67rem;color:var(--label-3);margin-bottom:1.5rem}
+.plan-ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.plan-ul li{display:flex;align-items:flex-start;gap:8px;font-size:.82rem;color:rgba(255,255,255,.72)}
+.plan-ul li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.plan-ul li.off{color:var(--label-3)}
+.plan-ul li.off::before{content:'—';color:var(--label-3)}
 
-/* Revenus */
-.rev-grid {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+.rev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.rev-card{
+  background:rgba(0,122,255,.06);border:1px solid rgba(0,122,255,.17);
+  border-radius:18px;padding:1.4rem;text-align:center;
+  transition:border-color .2s,background .2s;
 }
-.rev-card {
-  background:rgba(0,122,255,0.06);
-  border:1px solid rgba(0,122,255,0.18);
-  border-radius:var(--r-xl); padding:1.4rem;
-  text-align:center;
-  transition:border-color 0.2s, background 0.2s;
-}
-.rev-card:hover { border-color:rgba(0,122,255,0.4); background:rgba(0,122,255,0.1); }
-.rev-pct {
-  font-size:2.2rem; font-weight:800; letter-spacing:-0.04em;
-  color:var(--blue); display:block; margin-bottom:4px;
-}
-.rev-name { font-size:0.85rem; font-weight:600; margin-bottom:4px; }
-.rev-desc { font-size:0.72rem; color:var(--label-2); line-height:1.4; }
+.rev-card:hover{border-color:rgba(0,122,255,.4);background:rgba(0,122,255,.1)}
+.rev-pct{font-size:2.2rem;font-weight:800;letter-spacing:-.04em;color:var(--blue);display:block;margin-bottom:4px}
+.rev-name{font-size:.85rem;font-weight:600;margin-bottom:4px}
+.rev-desc{font-size:.72rem;color:var(--label-2);line-height:1.4}
 
 /* ══ IMPACT ══ */
-.impact-bg {
-  background:linear-gradient(160deg, rgba(52,199,89,0.08) 0%, var(--bg) 60%);
+.impact-bg{
+  background:linear-gradient(160deg,rgba(52,199,89,.08) 0%,var(--bg) 60%);
   border-top:1px solid var(--glass-b);
 }
-.impact-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin-top:3rem; }
-.i-num {
-  font-size:clamp(2rem,4vw,3.8rem); font-weight:800;
-  letter-spacing:-0.04em; line-height:1;
-  background:linear-gradient(135deg, #fff, var(--teal));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  background-clip:text;
+.imp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem}
+.i-num{
+  font-size:clamp(2rem,4vw,3.8rem);font-weight:800;letter-spacing:-.04em;line-height:1;
+  background:linear-gradient(135deg,#fff,var(--teal));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.i-lbl { font-size:0.82rem; color:var(--label-2); line-height:1.4; margin-top:6px; }
+.i-lbl{font-size:.82rem;color:var(--label-2);line-height:1.4;margin-top:6px}
 
 /* ══ STACK ══ */
-.stack-bg { background:var(--bg2); }
-.pills-wrap { display:flex; flex-wrap:wrap; gap:10px; margin-top:2rem; }
-.tp {
-  display:flex; align-items:center; gap:8px;
-  background:var(--glass); border:1px solid var(--glass-b);
-  border-radius:var(--r-full);
-  padding:8px 16px;
-  font-family:'JetBrains Mono', monospace;
-  font-size:0.75rem; color:var(--label-2);
-  transition:border-color 0.2s, color 0.2s;
+.stack-bg{background:var(--bg2)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:2rem}
+.tp{
+  display:flex;align-items:center;gap:8px;
+  background:var(--glass);border:1px solid var(--glass-b);border-radius:999px;
+  padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--label-2);
+  transition:border-color .2s,color .2s;
 }
-.tp:hover { border-color:rgba(0,122,255,0.4); color:var(--label); }
-.tp-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
-.tp-dot.b { background:var(--blue); }
-.tp-dot.g { background:var(--green); }
-.tp-dot.o { background:var(--orange); }
-.tp-dot.t { background:var(--teal); }
-.tp-dot.p { background:var(--purple); }
-.tp-dot.y { background:var(--yellow); }
+.tp:hover{border-color:rgba(0,122,255,.4);color:var(--label)}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.db{background:var(--blue)} .dg{background:var(--green)}
+.do{background:var(--orange)} .dt{background:var(--teal)}
+.dp{background:var(--purple)} .dy{background:var(--yellow)}
 
-/* ══ CTA FINAL ══ */
-.cta-final {
-  text-align:center;
-  position:relative; overflow:hidden;
-  padding:9rem 6vw;
+/* ══ CTA ══ */
+.cta-sec{text-align:center;padding:9rem 6vw;position:relative;overflow:hidden}
+.cta-sec::before{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,122,255,.13) 0%,transparent 65%);
 }
-.cta-final::before {
-  content:''; position:absolute;
-  top:50%; left:50%; transform:translate(-50%,-50%);
-  width:700px; height:700px; border-radius:50%;
-  background:radial-gradient(circle, rgba(0,122,255,0.14) 0%, transparent 65%);
-}
-.cta-final .section-h2 { font-size:clamp(2.5rem,5.5vw,5rem); margin-bottom:1rem; }
-.cta-final p { font-size:1rem; color:var(--label-2); max-width:440px; margin:0 auto 2.5rem; line-height:1.7; }
-.cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; position:relative; z-index:2; }
+.cta-sec .h2{font-size:clamp(2.5rem,5.5vw,5rem);margin-bottom:1rem}
+.cta-sec p{font-size:1rem;color:var(--label-2);max-width:440px;margin:0 auto 2.5rem;line-height:1.7}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
 
 /* ══ FOOTER ══ */
-footer {
-  background:var(--bg2);
-  border-top:1px solid var(--glass-b);
-  padding:1.8rem 6vw;
-  display:flex; align-items:center; justify-content:space-between;
-  flex-wrap:wrap; gap:1rem;
+footer{
+  background:var(--bg2);border-top:1px solid var(--glass-b);
+  padding:1.8rem 6vw;display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:1rem;
 }
-.ft-copy { font-family:'JetBrains Mono', monospace; font-size:0.7rem; color:var(--label-3); }
-.ft-copy strong { color:var(--blue); }
-.ft-links { display:flex; gap:1.5rem; }
-.ft-links a { font-family:'JetBrains Mono', monospace; font-size:0.68rem; color:var(--label-3); text-decoration:none; transition:color 0.2s; }
-.ft-links a:hover { color:var(--label); }
+.ft-copy{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--label-3)}
+.ft-copy strong{color:var(--blue)}
+.ft-links{display:flex;gap:1.5rem}
+.ft-links a{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--label-3);text-decoration:none;transition:color .2s}
+.ft-links a:hover{color:var(--label)}
 
 /* ══ RESPONSIVE ══ */
-@media(max-width:960px) {
-  .two-col, .habits-two, .plans-grid,
-  .rev-grid, .impact-grid, .feat-grid { grid-template-columns:1fr; }
-  .feat-card.wide { grid-column:span 1; }
-  .steps-row { grid-template-columns:1fr; }
-  .steps-row::before { display:none; }
-  .step { flex-direction:row; text-align:left; align-items:flex-start; }
-  .step-orb { width:56px; height:56px; font-size:1.2rem; flex-shrink:0; margin-bottom:0; margin-right:1rem; }
-  .plan.featured { transform:none; }
-  nav .nav-links { display:none; }
+@media(max-width:960px){
+  .two-col,.habits-two,.plans,.rev-grid,.imp-grid,.feat-grid{grid-template-columns:1fr}
+  .fc.wide{grid-column:span 1}
+  .plan.star{transform:none}
+  .steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .step{flex-direction:row;text-align:left;align-items:flex-start}
+  .step-orb{width:54px;height:54px;margin-bottom:0;margin-right:1rem;flex-shrink:0}
+  nav .nav-links{display:none}
 }
 </style>
 </head>
@@ -573,9 +416,11 @@ footer {
 
 <!-- ══ NAV ══ -->
 <nav>
-  <div class="nav-inner">
+  <div class="nav-i">
     <a href="#" class="nav-logo">
-      <div class="nav-icon">🌾</div>
+      <div class="nav-emblem">
+        <iconify-icon icon="solar:leaf-bold-duotone" class="ic-white" style="font-size:20px"></iconify-icon>
+      </div>
       <div class="nav-name">OPVN <span>Niger</span></div>
     </a>
     <div class="nav-links">
@@ -592,77 +437,86 @@ footer {
 <!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero-grid"></div>
-  <div class="hero-orb-1"></div>
-  <div class="hero-orb-2"></div>
-  <div class="hero-inner">
+  <div class="orb1"></div>
+  <div class="orb2"></div>
+  <div class="hero-in">
     <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      Application mobile officielle OPVN Niger · iOS &amp;amp; Android
+      <span class="live-dot"></span>
+      Application mobile officielle OPVN Niger · iOS &amp; Android
     </div>
     <h1 class="hero-title">
       Gérez vos stocks<br>
       <span class="accent">en temps réel.</span><br>
-      <span class="outline">Partout au Niger.</span>
+      <span class="stroke">Partout au Niger.</span>
     </h1>
     <p class="hero-sub">
       Une application premium qui digitalise chaque geste quotidien des agents OPVN — stocks alimentaires, convois, courriers, visualisation 3D des entrepôts — avec la fluidité d'iOS et la puissance d'un outil professionnel.
     </p>
-    <div class="hero-ctas">
-      <a href="#fonctions" class="btn-blue">Voir les fonctionnalités →</a>
-      <a href="#modele" class="btn-ghost">Modèle économique</a>
+    <div class="cta-group">
+      <a href="#fonctions" class="btn-blue">
+        <iconify-icon icon="solar:play-circle-bold-duotone" class="ic-white" style="font-size:18px"></iconify-icon>
+        Voir les fonctionnalités
+      </a>
+      <a href="#modele" class="btn-ghost">
+        <iconify-icon icon="solar:dollar-bold-duotone" style="font-size:18px"></iconify-icon>
+        Modèle économique
+      </a>
     </div>
     <div class="hero-stats">
       <div>
-        <div class="hstat-num">8</div>
-        <div class="hstat-lbl">Régions du Niger</div>
+        <div class="hs-num">8</div>
+        <div class="hs-lbl">Régions du Niger</div>
       </div>
       <div>
-        <div class="hstat-num">100%</div>
-        <div class="hstat-lbl">Offline-first</div>
+        <div class="hs-num">100%</div>
+        <div class="hs-lbl">Offline-first</div>
       </div>
       <div>
-        <div class="hstat-num">3D</div>
-        <div class="hstat-lbl">Entrepôts React Three Fiber</div>
+        <div class="hs-num">3D</div>
+        <div class="hs-lbl">Entrepôts React Three Fiber</div>
       </div>
       <div>
-        <div class="hstat-num">∞</div>
-        <div class="hstat-lbl">Sync cloud Supabase</div>
+        <div class="hs-num">∞</div>
+        <div class="hs-lbl">Sync cloud Supabase</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══ PROBLÈME / SOLUTION ══ -->
-<section class="pain-wrap" id="solution">
+<section class="pain-sec" id="solution">
   <div class="two-col">
-    <div class="reveal">
-      <span class="label-tag">Le constat terrain</span>
-      <h2 class="section-h2">Avant : papier,<br><em>retard, chaos.</em></h2>
+    <div class="rv">
+      <div class="label-tag">
+        <iconify-icon icon="solar:danger-triangle-bold-duotone" class="ic-red" style="font-size:18px"></iconify-icon>
+        Le constat terrain
+      </div>
+      <h2 class="h2">Avant : papier,<br><em>retard, chaos.</em></h2>
       <div class="divider"></div>
       <div class="pain-list">
         <div class="pain-item">
-          <span class="pain-dot"></span>
+          <iconify-icon icon="solar:document-text-bold-duotone" class="ic-red" style="font-size:28px;flex-shrink:0"></iconify-icon>
           <div>
             <strong>Registres papier obsolètes</strong>
             <span>Saisie manuelle, erreurs fréquentes, données non fiables. Reporting avec des semaines de retard.</span>
           </div>
         </div>
         <div class="pain-item">
-          <span class="pain-dot"></span>
+          <iconify-icon icon="solar:routing-bold-duotone" class="ic-red" style="font-size:28px;flex-shrink:0"></iconify-icon>
           <div>
             <strong>Convois sans suivi</strong>
-            <span>Impossible de savoir où est le camion, si la livraison a été effectuée, ou d'alerter en temps réel.</span>
+            <span>Impossible de savoir où est le camion, si la livraison a été effectuée ou d'alerter en temps réel.</span>
           </div>
         </div>
         <div class="pain-item">
-          <span class="pain-dot"></span>
+          <iconify-icon icon="solar:letter-bold-duotone" class="ic-red" style="font-size:28px;flex-shrink:0"></iconify-icon>
           <div>
             <strong>Correspondances perdues</strong>
             <span>Courriers et documents officiels sans traçabilité. Délais de transmission de 3 à 7 jours.</span>
           </div>
         </div>
         <div class="pain-item">
-          <span class="pain-dot"></span>
+          <iconify-icon icon="solar:global-bold-duotone" class="ic-red" style="font-size:28px;flex-shrink:0"></iconify-icon>
           <div>
             <strong>Zéro vision nationale</strong>
             <span>Chaque magasin opère en silo. La Direction Générale attend les rapports mensuels papier.</span>
@@ -671,44 +525,47 @@ footer {
       </div>
     </div>
 
-    <div class="reveal d2">
-      <span class="label-tag">La solution OPVN App</span>
-      <h2 class="section-h2">Après : digital,<br><em>précis, instantané.</em></h2>
+    <div class="rv d2">
+      <div class="label-tag">
+        <iconify-icon icon="solar:check-circle-bold-duotone" class="ic-green" style="font-size:18px"></iconify-icon>
+        La solution OPVN App
+      </div>
+      <h2 class="h2">Après : digital,<br><em>précis, instantané.</em></h2>
       <div class="divider"></div>
       <div class="sol-list">
         <div class="sol-item">
-          <div class="sol-bubble">01</div>
+          <div class="sol-num">01</div>
           <div>
             <strong>Base de données locale (WatermelonDB)</strong>
-            <span>Fonctionne sans Internet. Toutes les données disponibles offline, synchronisées dès le retour en réseau.</span>
+            <span>Fonctionne sans Internet. Données disponibles offline, synchronisées dès le retour en réseau.</span>
           </div>
         </div>
         <div class="sol-item">
-          <div class="sol-bubble">02</div>
+          <div class="sol-num">02</div>
           <div>
-            <strong>Entrepôts en 3D avec React Three Fiber</strong>
-            <span>Visualisez chaque magasin avec vrais sacs (25/50/100 kg) empilés sur palettes selon le stock réel.</span>
+            <strong>Entrepôts en 3D (React Three Fiber)</strong>
+            <span>Vrais sacs 25/50/100 kg sur palettes selon le stock réel. Rotation caméra orbitale.</span>
           </div>
         </div>
         <div class="sol-item">
-          <div class="sol-bubble">03</div>
+          <div class="sol-num">03</div>
           <div>
             <strong>Cartographie nationale MapLibre</strong>
             <span>Tous les magasins sur une carte. Un tap → détails → vue 3D. Navigation fluide entre régions.</span>
           </div>
         </div>
         <div class="sol-item">
-          <div class="sol-bubble">04</div>
+          <div class="sol-num">04</div>
           <div>
             <strong>Synchronisation cloud Supabase</strong>
-            <span>Statut visible : Synchronisé · En attente · Erreur. Les données circulent entre toutes les régions.</span>
+            <span>Statut visible : Synchronisé · En attente · Erreur. Données partagées entre toutes les régions.</span>
           </div>
         </div>
         <div class="sol-item">
-          <div class="sol-bubble">05</div>
+          <div class="sol-num">05</div>
           <div>
             <strong>Design iOS premium glassmorphism</strong>
-            <span>Interface fluide, animations natives, dark mode total. La même qualité qu'une app Apple Store.</span>
+            <span>Interface fluide, animations natives, dark mode total. La qualité d'une app App Store.</span>
           </div>
         </div>
       </div>
@@ -718,149 +575,183 @@ footer {
 
 <!-- ══ FONCTIONNALITÉS ══ -->
 <section id="fonctions">
-  <div class="reveal">
-    <span class="label-tag">Fonctionnalités</span>
-    <h2 class="section-h2">Tout ce dont un agent<br><em>a besoin, au quotidien.</em></h2>
+  <div class="rv">
+    <div class="label-tag">
+      <iconify-icon icon="solar:widget-5-bold-duotone" style="font-size:18px"></iconify-icon>
+      Fonctionnalités
+    </div>
+    <h2 class="h2">Tout ce dont un agent<br><em>a besoin, au quotidien.</em></h2>
     <div class="divider"></div>
   </div>
 
   <div class="feat-grid">
-    <div class="feat-card wide reveal">
-      <span class="feat-emoji">🏭</span>
-      <div class="feat-title">Gestion complète des stocks alimentaires</div>
-      <div class="feat-desc">Ajoutez, retirez et transférez mil, sorgho, maïs, riz, niébé, huile, sucre et lait. Chaque mouvement est tracé avec opérateur, date, motif et numéro de lot. Les barres de progression s'animent en temps réel — vous voyez le stock disparaître ou s'accumuler visuellement.</div>
-      <div class="feat-chips">
-        <span class="chip green">Traçabilité complète</span>
-        <span class="chip blue">8 types de produits</span>
-        <span class="chip orange">Alertes stock bas</span>
-        <span class="chip purple">Numéros de lot</span>
+    <!-- WIDE — Stocks -->
+    <div class="fc wide rv">
+      <div class="fc-bar"></div>
+      <iconify-icon icon="solar:box-bold-duotone" class="fc-icon" style="font-size:36px"></iconify-icon>
+      <div class="fc-title">Gestion complète des stocks alimentaires</div>
+      <div class="fc-desc">Ajoutez, retirez et transférez mil, sorgho, maïs, riz, niébé, huile, sucre et lait. Chaque mouvement est tracé avec opérateur, date, motif et numéro de lot. Les barres de progression s'animent en temps réel — vous voyez le stock évoluer visuellement.</div>
+      <div class="fc-chips">
+        <span class="chip g">Traçabilité complète</span>
+        <span class="chip b">8 types de produits</span>
+        <span class="chip o">Alertes stock bas</span>
+        <span class="chip p">Numéros de lot</span>
       </div>
     </div>
 
-    <div class="feat-card c-purple reveal d1">
-      <span class="feat-emoji">🥽</span>
-      <div class="feat-title">Visualisation 3D des entrepôts</div>
-      <div class="feat-desc">Entrepôt en 3D avec React Three Fiber. Sacs de 25/50/100 kg sur palettes, colonnes métalliques, sol béton. Rotation caméra orbitale avec bouton Tourner/Pause.</div>
-      <div class="feat-chips">
-        <span class="chip purple">React Three Fiber</span>
-        <span class="chip blue">Temps réel</span>
+    <!-- 3D -->
+    <div class="fc c-purple rv d1">
+      <div class="fc-bar"></div>
+      <iconify-icon icon="solar:planet-bold-duotone" class="fc-icon ic-purple" style="font-size:36px"></iconify-icon>
+      <div class="fc-title">Visualisation 3D des entrepôts</div>
+      <div class="fc-desc">Entrepôt en 3D avec React Three Fiber. Sacs de 25/50/100 kg sur palettes, colonnes métalliques, sol béton. Rotation caméra orbitale avec bouton Tourner/Pause.</div>
+      <div class="fc-chips">
+        <span class="chip p">React Three Fiber</span>
+        <span class="chip b">Temps réel</span>
       </div>
     </div>
 
-    <div class="feat-card c-teal reveal">
-      <span class="feat-emoji">🗺️</span>
-      <div class="feat-title">Carte nationale interactive</div>
-      <div class="feat-desc">Tous les magasins OPVN sur MapLibre. Un tap → détails → vue 3D. Navigation fluide sur les 8 régions du Niger.</div>
-      <div class="feat-chips">
-        <span class="chip blue">MapLibre 11.2</span>
-        <span class="chip green">8 régions</span>
+    <!-- Carte -->
+    <div class="fc c-teal rv">
+      <div class="fc-bar"></div>
+      <iconify-icon icon="solar:map-bold-duotone" class="fc-icon ic-teal" style="font-size:36px"></iconify-icon>
+      <div class="fc-title">Carte nationale interactive</div>
+      <div class="fc-desc">Tous les magasins OPVN sur MapLibre. Un tap → détails → vue 3D. Navigation fluide sur les 8 régions du Niger.</div>
+      <div class="fc-chips">
+        <span class="chip b">MapLibre 11.2</span>
+        <span class="chip g">8 régions</span>
       </div>
     </div>
 
-    <div class="feat-card c-orange reveal d1">
-      <span class="feat-emoji">🚚</span>
-      <div class="feat-title">Suivi des convois</div>
-      <div class="feat-desc">Créez et suivez chaque convoi d'approvisionnement. Chauffeur, véhicule, chargement, statut de la préparation à la livraison.</div>
-      <div class="feat-chips">
-        <span class="chip orange">GPS live</span>
-        <span class="chip blue">Statuts</span>
+    <!-- Convois -->
+    <div class="fc c-orange rv d1">
+      <div class="fc-bar"></div>
+      <iconify-icon icon="solar:delivery-bold-duotone" class="fc-icon ic-orange" style="font-size:36px"></iconify-icon>
+      <div class="fc-title">Suivi des convois</div>
+      <div class="fc-desc">Créez et suivez chaque convoi. Chauffeur, véhicule, chargement, statut de la préparation à la livraison en temps réel.</div>
+      <div class="fc-chips">
+        <span class="chip o">GPS live</span>
+        <span class="chip b">Statuts</span>
       </div>
     </div>
 
-    <div class="feat-card c-green reveal">
-      <span class="feat-emoji">📮</span>
-      <div class="feat-title">Correspondances inter-régions</div>
-      <div class="feat-desc">Courriers, colis et documents officiels entre régions. Référence unique, historique des étapes, dates de réception estimée.</div>
-      <div class="feat-chips">
-        <span class="chip green">Traçabilité</span>
-        <span class="chip blue">Documents officiels</span>
+    <!-- Correspondances -->
+    <div class="fc c-green rv">
+      <div class="fc-bar"></div>
+      <iconify-icon icon="solar:plain-bold-duotone" class="fc-icon ic-green" style="font-size:36px"></iconify-icon>
+      <div class="fc-title">Correspondances inter-régions</div>
+      <div class="fc-desc">Courriers, colis et documents officiels entre régions. Référence unique, historique des étapes, dates de réception estimée.</div>
+      <div class="fc-chips">
+        <span class="chip g">Traçabilité</span>
+        <span class="chip b">Officiel</span>
       </div>
     </div>
 
-    <div class="feat-card reveal d1">
-      <span class="feat-emoji">☁️</span>
-      <div class="feat-title">Sync Supabase</div>
-      <div class="feat-desc">Données synchronisées dans le cloud. Indicateur compact dans le header : vert (sync), orange (en attente), rouge (erreur).</div>
-      <div class="feat-chips">
-        <span class="chip green">Offline-first</span>
-        <span class="chip blue">Cloud backup</span>
+    <!-- Sync -->
+    <div class="fc rv d1">
+      <div class="fc-bar"></div>
+      <iconify-icon icon="solar:cloud-upload-bold-duotone" class="fc-icon" style="font-size:36px"></iconify-icon>
+      <div class="fc-title">Sync Supabase</div>
+      <div class="fc-desc">Données synchronisées dans le cloud. Indicateur compact dans le header : vert (sync), orange (attente), rouge (erreur). Offline-first.</div>
+      <div class="fc-chips">
+        <span class="chip g">Offline-first</span>
+        <span class="chip b">Cloud backup</span>
       </div>
     </div>
 
-    <div class="feat-card c-yellow reveal">
-      <span class="feat-emoji">🔐</span>
-      <div class="feat-title">Authentification PIN sécurisée</div>
-      <div class="feat-desc">Inscription nom + téléphone + email + PIN 4 chiffres. Connexion rapide par PIN. Données chiffrées dans expo-secure-store.</div>
-      <div class="feat-chips">
-        <span class="chip orange">SecureStore</span>
-        <span class="chip blue">PIN à 4 chiffres</span>
+    <!-- PIN -->
+    <div class="fc c-yellow rv">
+      <div class="fc-bar"></div>
+      <iconify-icon icon="solar:shield-keyhole-bold-duotone" class="fc-icon ic-yellow" style="font-size:36px"></iconify-icon>
+      <div class="fc-title">Authentification PIN</div>
+      <div class="fc-desc">Inscription avec nom, téléphone, email, PIN à 4 chiffres. Connexion rapide par PIN. Données chiffrées dans expo-secure-store.</div>
+      <div class="fc-chips">
+        <span class="chip o">SecureStore</span>
+        <span class="chip b">PIN à 4 chiffres</span>
       </div>
     </div>
 
-    <div class="feat-card c-red reveal d1">
-      <span class="feat-emoji">🏢</span>
-      <div class="feat-title">Administration superadmin</div>
-      <div class="feat-desc">Créer, activer, désactiver, supprimer des magasins. Statistiques consolidées nationales. Dimensions 3D configurables.</div>
-      <div class="feat-chips">
-        <span class="chip orange">Superadmin</span>
-        <span class="chip green">Stats nationales</span>
+    <!-- Admin -->
+    <div class="fc c-red rv d1">
+      <div class="fc-bar"></div>
+      <iconify-icon icon="solar:settings-bold-duotone" class="fc-icon ic-red" style="font-size:36px"></iconify-icon>
+      <div class="fc-title">Administration superadmin</div>
+      <div class="fc-desc">Créer, activer, désactiver, supprimer des magasins. Statistiques consolidées nationales. Dimensions 3D configurables.</div>
+      <div class="fc-chips">
+        <span class="chip o">Superadmin</span>
+        <span class="chip g">Stats nationales</span>
       </div>
     </div>
 
-    <div class="feat-card c-teal reveal">
-      <span class="feat-emoji">👤</span>
-      <div class="feat-title">Profil &amp;amp; paramètres</div>
-      <div class="feat-desc">Modifier nom, email, PIN depuis la page profil. Accès via avatar en haut à droite. Déconnexion sécurisée avec confirmation.</div>
-      <div class="feat-chips">
-        <span class="chip blue">Édition profil</span>
-        <span class="chip purple">Modifier PIN</span>
+    <!-- Profil -->
+    <div class="fc c-teal rv">
+      <div class="fc-bar"></div>
+      <iconify-icon icon="solar:user-circle-bold-duotone" class="fc-icon ic-teal" style="font-size:36px"></iconify-icon>
+      <div class="fc-title">Profil &amp; paramètres</div>
+      <div class="fc-desc">Modifier nom, email, PIN depuis la page profil. Accès via avatar en haut à droite. Déconnexion sécurisée avec confirmation.</div>
+      <div class="fc-chips">
+        <span class="chip b">Édition profil</span>
+        <span class="chip p">Modifier PIN</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ PARCOURS ══ -->
+<!-- ══ PARCOURS UTILISATEUR ══ -->
 <section class="journey-bg">
-  <div class="reveal">
-    <span class="label-tag">Prise en main</span>
-    <h2 class="section-h2">5 étapes pour<br><em>démarrer.</em></h2>
+  <div class="rv">
+    <div class="label-tag">
+      <iconify-icon icon="solar:route-bold-duotone" style="font-size:18px"></iconify-icon>
+      Prise en main
+    </div>
+    <h2 class="h2">5 étapes pour<br><em>démarrer.</em></h2>
     <div class="divider"></div>
   </div>
-  <div class="steps-row">
-    <div class="step reveal">
-      <div class="step-orb">📱</div>
+  <div class="steps">
+    <div class="step rv">
+      <div class="step-orb">
+        <iconify-icon icon="solar:smartphone-bold-duotone" style="font-size:34px"></iconify-icon>
+      </div>
       <div>
         <div class="step-n">ÉTAPE 01</div>
         <div class="step-t">Installation</div>
-        <div class="step-d">APK Android ou App Store iOS. Compatible Android 7+ et iOS 15+. Aucune configuration réseau requise.</div>
+        <div class="step-d">APK Android ou App Store iOS. Compatible Android 7+ et iOS 15+. Aucune config réseau requise.</div>
       </div>
     </div>
-    <div class="step reveal d1">
-      <div class="step-orb">👤</div>
+    <div class="step rv d1">
+      <div class="step-orb">
+        <iconify-icon icon="solar:user-plus-rounded-bold-duotone" style="font-size:34px"></iconify-icon>
+      </div>
       <div>
         <div class="step-n">ÉTAPE 02</div>
         <div class="step-t">Création de compte</div>
-        <div class="step-d">Nom complet, téléphone, email, PIN à 4 chiffres. 30 secondes pour être opérationnel.</div>
+        <div class="step-d">Nom, téléphone, email, PIN 4 chiffres. 30 secondes pour être opérationnel.</div>
       </div>
     </div>
-    <div class="step reveal d2">
-      <div class="step-orb">🏗️</div>
+    <div class="step rv d2">
+      <div class="step-orb">
+        <iconify-icon icon="solar:buildings-bold-duotone" style="font-size:34px"></iconify-icon>
+      </div>
       <div>
         <div class="step-n">ÉTAPE 03</div>
-        <div class="step-t">Configurer les magasins</div>
+        <div class="step-t">Configurer magasins</div>
         <div class="step-d">Ajoutez vos entrepôts avec dimensions réelles. La scène 3D se génère automatiquement.</div>
       </div>
     </div>
-    <div class="step reveal d3">
-      <div class="step-orb">📦</div>
+    <div class="step rv d3">
+      <div class="step-orb">
+        <iconify-icon icon="solar:box-minimalistic-bold-duotone" style="font-size:34px"></iconify-icon>
+      </div>
       <div>
         <div class="step-n">ÉTAPE 04</div>
         <div class="step-t">Gérer les stocks</div>
-        <div class="step-d">Ajoutez, retirez, transférez. Chaque mouvement est tracé, daté et attribué à un opérateur.</div>
+        <div class="step-d">Ajoutez, retirez, transférez. Chaque mouvement est tracé, daté et attribué.</div>
       </div>
     </div>
-    <div class="step reveal d4">
-      <div class="step-orb">🌐</div>
+    <div class="step rv d4">
+      <div class="step-orb">
+        <iconify-icon icon="solar:cloud-check-bold-duotone" style="font-size:34px"></iconify-icon>
+      </div>
       <div>
         <div class="step-n">ÉTAPE 05</div>
         <div class="step-t">Synchroniser</div>
@@ -873,13 +764,16 @@ footer {
 <!-- ══ HABITUDES QUOTIDIENNES ══ -->
 <section id="quotidien">
   <div class="habits-two">
-    <div class="reveal">
-      <span class="label-tag">Transformation du quotidien</span>
-      <h2 class="section-h2">La journée d'un<br><em>agent OPVN.</em></h2>
+    <div class="rv">
+      <div class="label-tag">
+        <iconify-icon icon="solar:calendar-mark-bold-duotone" style="font-size:18px"></iconify-icon>
+        Transformation du quotidien
+      </div>
+      <h2 class="h2">La journée d'un<br><em>agent OPVN.</em></h2>
       <div class="divider"></div>
       <div class="timeline">
         <div class="t-item">
-          <div class="t-orb">🌅</div>
+          <div class="t-orb"><iconify-icon icon="solar:sun-bold-duotone" style="font-size:20px"></iconify-icon></div>
           <div>
             <div class="t-time">07:30</div>
             <div class="t-name">Prise de service</div>
@@ -887,7 +781,7 @@ footer {
           </div>
         </div>
         <div class="t-item">
-          <div class="t-orb">📦</div>
+          <div class="t-orb"><iconify-icon icon="solar:box-bold-duotone" style="font-size:20px"></iconify-icon></div>
           <div>
             <div class="t-time">08:15</div>
             <div class="t-name">Réception de marchandises</div>
@@ -895,7 +789,7 @@ footer {
           </div>
         </div>
         <div class="t-item">
-          <div class="t-orb">🏭</div>
+          <div class="t-orb"><iconify-icon icon="solar:buildings-bold-duotone" style="font-size:20px"></iconify-icon></div>
           <div>
             <div class="t-time">10:00</div>
             <div class="t-name">Inventaire du magasin</div>
@@ -903,7 +797,7 @@ footer {
           </div>
         </div>
         <div class="t-item">
-          <div class="t-orb">🚚</div>
+          <div class="t-orb"><iconify-icon icon="solar:delivery-bold-duotone" style="font-size:20px"></iconify-icon></div>
           <div>
             <div class="t-time">14:00</div>
             <div class="t-name">Départ d'un convoi</div>
@@ -911,59 +805,72 @@ footer {
           </div>
         </div>
         <div class="t-item">
-          <div class="t-orb">📮</div>
+          <div class="t-orb"><iconify-icon icon="solar:plain-bold-duotone" style="font-size:20px"></iconify-icon></div>
           <div>
             <div class="t-time">16:30</div>
             <div class="t-name">Envoi de rapport régional</div>
-            <div><span class="t-old">Fax ou courrier physique (3–5 jours)</span><span class="t-arr">→</span><span class="t-new">Document officiel envoyé en 2 taps</span></div>
+            <div><span class="t-old">Fax ou courrier physique (3–5 jours)</span><span class="t-arr">→</span><span class="t-new">Document officiel en 2 taps</span></div>
           </div>
         </div>
         <div class="t-item">
-          <div class="t-orb">☁️</div>
+          <div class="t-orb"><iconify-icon icon="solar:cloud-upload-bold-duotone" style="font-size:20px"></iconify-icon></div>
           <div>
             <div class="t-time">17:30</div>
             <div class="t-name">Fin de journée</div>
-            <div><span class="t-old">Rapport manuscrit + copie de sauvegarde</span><span class="t-arr">→</span><span class="t-new">Sync automatique cloud, données sécurisées</span></div>
+            <div><span class="t-old">Rapport manuscrit + copie sauvegarde</span><span class="t-arr">→</span><span class="t-new">Sync automatique cloud, sécurisé</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="reveal d2">
-      <span class="label-tag">Ce que gagne chaque agent</span>
-      <h2 class="section-h2">Facilité,<br><em>efficacité, modernité.</em></h2>
+    <div class="rv d2">
+      <div class="label-tag">
+        <iconify-icon icon="solar:star-bold-duotone" style="font-size:18px"></iconify-icon>
+        Ce que gagne chaque agent
+      </div>
+      <h2 class="h2">Facilité,<br><em>efficacité, modernité.</em></h2>
       <div class="divider"></div>
       <div class="val-stack">
         <div class="val-card">
-          <div class="val-icon vi-blue">⚡</div>
+          <div class="val-ico vi-b">
+            <iconify-icon icon="solar:bolt-circle-bold-duotone" style="font-size:24px"></iconify-icon>
+          </div>
           <div>
             <div class="val-title">Efficacité multipliée par 3</div>
             <div class="val-desc">45 min d'inventaire papier devient 5 min avec l'app. Chaque tâche quotidienne prend 3× moins de temps.</div>
           </div>
         </div>
         <div class="val-card">
-          <div class="val-icon vi-green">🎯</div>
+          <div class="val-ico vi-g">
+            <iconify-icon icon="solar:shield-check-bold-duotone" class="ic-green" style="font-size:24px"></iconify-icon>
+          </div>
           <div>
             <div class="val-title">Zéro erreur de saisie</div>
             <div class="val-desc">Formulaires guidés, date-pickers natifs, validation automatique. Les erreurs de frappe n'existent plus.</div>
           </div>
         </div>
         <div class="val-card">
-          <div class="val-icon vi-teal">🌐</div>
+          <div class="val-ico vi-t">
+            <iconify-icon icon="solar:global-bold-duotone" class="ic-teal" style="font-size:24px"></iconify-icon>
+          </div>
           <div>
             <div class="val-title">Vision nationale en temps réel</div>
             <div class="val-desc">Le directeur à Niamey voit les stocks de Zinder, Agadez, Diffa depuis son téléphone. Instantanément.</div>
           </div>
         </div>
         <div class="val-card">
-          <div class="val-icon vi-orange">📊</div>
+          <div class="val-ico vi-o">
+            <iconify-icon icon="solar:chart-square-bold-duotone" class="ic-orange" style="font-size:24px"></iconify-icon>
+          </div>
           <div>
             <div class="val-title">Décisions basées sur les données</div>
-            <div class="val-desc">Graphiques de capacité, alertes de stock bas, historique complet. Décidez sur des faits, pas des estimations.</div>
+            <div class="val-desc">Graphiques de capacité, alertes stock bas, historique complet. Décidez sur des faits, pas des estimations.</div>
           </div>
         </div>
         <div class="val-card">
-          <div class="val-icon vi-purple">🔒</div>
+          <div class="val-ico vi-p">
+            <iconify-icon icon="solar:lock-keyhole-bold-duotone" class="ic-purple" style="font-size:24px"></iconify-icon>
+          </div>
           <div>
             <div class="val-title">Données sécurisées et pérennes</div>
             <div class="val-desc">Chiffrement local SecureStore + backup cloud Supabase. Vos données ne se perdent jamais, même hors ligne.</div>
@@ -976,16 +883,19 @@ footer {
 
 <!-- ══ MODÈLE ÉCONOMIQUE ══ -->
 <section class="eco-bg" id="modele">
-  <div class="reveal">
-    <span class="label-tag">Modèle économique</span>
-    <h2 class="section-h2">Un modèle <em>hybride</em><br>et pérenne.</h2>
+  <div class="rv">
+    <div class="label-tag">
+      <iconify-icon icon="solar:pie-chart-bold-duotone" style="font-size:18px"></iconify-icon>
+      Modèle économique
+    </div>
+    <h2 class="h2">Un modèle <em>hybride</em><br>et pérenne.</h2>
     <div class="divider"></div>
-    <p class="section-p">Conçu pour une institution gouvernementale — accessible en entrée, puissant à l'échelle nationale. 3 niveaux d'accès progressifs, 4 sources de revenus durables.</p>
+    <p class="sub">Conçu pour une institution gouvernementale — accessible en entrée, puissant à l'échelle nationale. 3 niveaux d'accès progressifs, 4 sources de revenus durables.</p>
   </div>
 
-  <div class="plans-grid">
-    <div class="plan reveal">
-      <span class="plan-icon">🌱</span>
+  <div class="plans">
+    <div class="plan rv">
+      <iconify-icon icon="solar:leaf-bold-duotone" class="plan-icon ic-green" style="font-size:36px"></iconify-icon>
       <div class="plan-name">Essentiel</div>
       <div class="plan-who">MAGASIN LOCAL · USAGE TERRAIN</div>
       <div class="plan-price">Gratuit<sub> pour toujours</sub></div>
@@ -1002,9 +912,9 @@ footer {
       </ul>
     </div>
 
-    <div class="plan featured reveal d1">
+    <div class="plan star rv d1">
       <div class="plan-badge">RECOMMANDÉ</div>
-      <span class="plan-icon">🌿</span>
+      <iconify-icon icon="solar:buildings-bold-duotone" class="plan-icon" style="font-size:36px"></iconify-icon>
       <div class="plan-name">Régional</div>
       <div class="plan-who">DIRECTION RÉGIONALE OPVN</div>
       <div class="plan-price"><sup>₣</sup>800 000<sub>/an</sub></div>
@@ -1021,8 +931,8 @@ footer {
       </ul>
     </div>
 
-    <div class="plan reveal d2">
-      <span class="plan-icon">🌳</span>
+    <div class="plan rv d2">
+      <iconify-icon icon="solar:global-bold-duotone" class="plan-icon ic-teal" style="font-size:36px"></iconify-icon>
       <div class="plan-name">National</div>
       <div class="plan-who">DIRECTION GÉNÉRALE OPVN</div>
       <div class="plan-price"><sup>₣</sup>5 000 000<sub>/an</sub></div>
@@ -1040,28 +950,33 @@ footer {
     </div>
   </div>
 
-  <div class="reveal">
-    <span class="label-tag" style="margin-top:1rem">Sources de revenus</span>
-    <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:2rem;">4 piliers de <em style="color:var(--blue)">monétisation.</em></h3>
+  <div class="rv">
+    <div class="label-tag" style="margin-top:1rem">
+      <iconify-icon icon="solar:graph-up-bold-duotone" style="font-size:18px"></iconify-icon>
+      Sources de revenus
+    </div>
+    <h3 style="font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin-bottom:2rem">
+      4 piliers de <em style="color:var(--blue)">monétisation.</em>
+    </h3>
   </div>
 
   <div class="rev-grid">
-    <div class="rev-card reveal">
+    <div class="rev-card rv">
       <span class="rev-pct">45%</span>
       <div class="rev-name">Licences SaaS</div>
       <div class="rev-desc">Abonnements annuels régionaux et nationaux. Revenus récurrents et prévisibles.</div>
     </div>
-    <div class="rev-card reveal d1">
+    <div class="rev-card rv d1">
       <span class="rev-pct">25%</span>
-      <div class="rev-name">Formation &amp;amp; Déploiement</div>
+      <div class="rev-name">Formation &amp; Déploiement</div>
       <div class="rev-desc">Ateliers agents sur site, déploiement accompagné, ateliers régionaux.</div>
     </div>
-    <div class="rev-card reveal d2">
+    <div class="rev-card rv d2">
       <span class="rev-pct">20%</span>
-      <div class="rev-name">Maintenance &amp;amp; Support</div>
+      <div class="rev-name">Maintenance &amp; Support</div>
       <div class="rev-desc">Contrats support technique, mises à jour, personnalisations sur mesure.</div>
     </div>
-    <div class="rev-card reveal d3">
+    <div class="rev-card rv d3">
       <span class="rev-pct">10%</span>
       <div class="rev-name">Partenariats ONG</div>
       <div class="rev-desc">Intégrations PAM, FAO, UNICEF. L'app comme outil des programmes alimentaires.</div>
@@ -1071,67 +986,80 @@ footer {
 
 <!-- ══ IMPACT ══ -->
 <section class="impact-bg" id="impact">
-  <div class="reveal">
-    <span class="label-tag">Impact attendu</span>
-    <h2 class="section-h2">Chiffrer la<br><em>transformation.</em></h2>
+  <div class="rv">
+    <div class="label-tag">
+      <iconify-icon icon="solar:target-bold-duotone" style="font-size:18px"></iconify-icon>
+      Impact attendu
+    </div>
+    <h2 class="h2">Chiffrer la<br><em>transformation.</em></h2>
     <div class="divider"></div>
   </div>
-  <div class="impact-grid">
-    <div class="reveal">
+  <div class="imp-grid">
+    <div class="rv">
       <div class="i-num">−70%</div>
       <div class="i-lbl">Temps passé sur la gestion administrative quotidienne des stocks</div>
     </div>
-    <div class="reveal d1">
+    <div class="rv d1">
       <div class="i-num">+95%</div>
       <div class="i-lbl">Fiabilité des données de stock vs registres papier traditionnels</div>
     </div>
-    <div class="reveal d2">
+    <div class="rv d2">
       <div class="i-num">8</div>
       <div class="i-lbl">Régions du Niger connectées sur une seule plateforme unifiée</div>
     </div>
-    <div class="reveal d3">
+    <div class="rv d3">
       <div class="i-num">24/7</div>
       <div class="i-lbl">Disponibilité totale des données, même hors connexion Internet</div>
     </div>
   </div>
 </section>
 
-<!-- ══ STACK TECH ══ -->
+<!-- ══ STACK ══ -->
 <section class="stack-bg">
-  <div class="reveal">
-    <span class="label-tag">Stack technique</span>
-    <h2 class="section-h2">Construit sur des<br><em>fondations solides.</em></h2>
+  <div class="rv">
+    <div class="label-tag">
+      <iconify-icon icon="solar:code-bold-duotone" style="font-size:18px"></iconify-icon>
+      Stack technique
+    </div>
+    <h2 class="h2">Construit sur des<br><em>fondations solides.</em></h2>
     <div class="divider"></div>
-    <p class="section-p">Technologies production-grade, maintenues par des milliers de développeurs, éprouvées en environnement mobile africain.</p>
+    <p class="sub">Technologies production-grade, éprouvées en environnement mobile africain. Open-source et maintenues par des milliers de développeurs.</p>
   </div>
-  <div class="pills-wrap reveal d1">
-    <span class="tp"><spanExpo class="tp-dot b"></span>Expo 55 · React Native 0.83</span>
-    <span class="tp"><spanWatermelonDB class="tp-dot g"></span>WatermelonDB 0.28 (SQLite)</span>
-    <span class="tp"><spanSupabase class="tp-dot b"></span>Supabase (PostgreSQL)</span>
-    <span class="tp"><spanMapLibre class="tp-dot t"></span>MapLibre React Native 11.2</span>
-    <span class="tp"><spanReact class="tp-dot p"></span>React Three Fiber</span>
-    <span class="tp"><spanZustand class="tp-dot g"></span>Zustand State Management</span>
-    <span class="tp"><spanexpo-secure-store class="tp-dot b"></span>expo-secure-store (chiffrement)</span>
-    <span class="tp"><spanExpo class="tp-dot o"></span>Expo Router (navigation)</span>
-    <span class="tp"><spanTypeScript class="tp-dot y"></span>TypeScript strict mode</span>
-    <span class="tp"><spanReact class="tp-dot g"></span>React Native Reanimated 4</span>
-    <span class="tp"><spanexpo-network class="tp-dot t"></span>expo-network (connectivité)</span>
-    <span class="tp"><spanThree.js class="tp-dot p"></span>Three.js 0.184</span>
+  <div class="pills rv d1">
+    <span class="tp"><span class="dot db"></span>Expo 55 · React Native 0.83</span>
+    <span class="tp"><span class="dot dg"></span>WatermelonDB 0.28 (SQLite)</span>
+    <span class="tp"><span class="dot db"></span>Supabase (PostgreSQL)</span>
+    <span class="tp"><span class="dot dt"></span>MapLibre React Native 11.2</span>
+    <span class="tp"><span class="dot dp"></span>React Three Fiber</span>
+    <span class="tp"><span class="dot dg"></span>Zustand State Management</span>
+    <span class="tp"><span class="dot dy"></span>expo-secure-store</span>
+    <span class="tp"><span class="dot db"></span>Expo Router (navigation)</span>
+    <span class="tp"><span class="dot dg"></span>TypeScript strict mode</span>
+    <span class="tp"><span class="dot dt"></span>React Native Reanimated 4</span>
+    <span class="tp"><span class="dot db"></span>expo-network (connectivité)</span>
+    <span class="tp"><span class="dot dp"></span>Three.js 0.184</span>
   </div>
 </section>
 
 <!-- ══ CTA FINAL ══ -->
-<section class="cta-final">
-  <span class="label-tag" style="display:block;text-align:center">Pour aller de l'avant</span>
-  <h2 class="section-h2 reveal">
+<section class="cta-sec">
+  <div class="label-tag" style="justify-content:center">
+    <iconify-icon icon="solar:rocket-bold-duotone" style="font-size:18px"></iconify-icon>
+    Pour aller de l'avant
+  </div>
+  <h2 class="h2 rv">
     L'avenir de la sécurité<br>alimentaire <em>commence ici.</em>
   </h2>
-  <p class="reveal">
-    OPVN Niger mérite des outils à la hauteur de sa mission. Une application simple, puissante, et taillée pour le terrain nigérien.
-  </p>
-  <div class="cta-btns reveal">
-    <a href="#fonctions" class="btn-blue">Explorer les fonctionnalités →</a>
-    <a href="#modele" class="btn-ghost">Voir les offres</a>
+  <p class="rv">OPVN Niger mérite des outils à la hauteur de sa mission. Simple, puissant, taillé pour le terrain nigérien.</p>
+  <div class="cta-btns rv">
+    <a href="#fonctions" class="btn-blue">
+      <iconify-icon icon="solar:play-circle-bold-duotone" class="ic-white" style="font-size:18px"></iconify-icon>
+      Explorer les fonctionnalités
+    </a>
+    <a href="#modele" class="btn-ghost">
+      <iconify-icon icon="solar:tag-price-bold-duotone" style="font-size:18px"></iconify-icon>
+      Voir les offres
+    </a>
   </div>
 </section>
 
@@ -1151,52 +1079,51 @@ footer {
 
 <script>
 // Scroll reveal
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+const io = new IntersectionObserver(e => {
+  e.forEach(x => { if(x.isIntersecting) x.target.classList.add('in') })
+}, { threshold:0.1, rootMargin:'0px 0px -50px 0px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
-    if(t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    if(t){ e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }) }
   });
 });
 
-// Nav ombre au scroll
+// Nav background au scroll
 window.addEventListener('scroll', () => {
   document.querySelector('nav').style.background =
-    window.scrollY > 20 ? 'rgba(10,15,30,0.92)' : 'rgba(10,15,30,0.75)';
+    window.scrollY > 20 ? 'rgba(10,15,30,0.96)' : 'rgba(10,15,30,0.80)';
 });
 
 // Compteurs animés
 function animCount(el) {
   const raw = el.textContent;
-  const num = parseFloat(raw.replace(/[^0-9.]+/g,''));
+  const num = parseFloat(raw.replace(/[^\d.]+/g,''));
   if(isNaN(num)||num===0) return;
   const pre = raw.match(/^[^\d]*/)[0];
   const suf = raw.match(/[^\d.]*$/)[0];
   const dur = 1600; let start = null;
   const tick = ts => {
     if(!start) start = ts;
-    const p = Math.min((ts-start)/dur,1);
+    const p = Math.min((ts-start)/dur, 1);
     const v = 1 - Math.pow(1-p, 3);
-    el.textContent = pre + (num < 10 ? (v*num).toFixed(0) : Math.round(v*num)) + suf;
+    el.textContent = pre + (num < 10 ? Math.round(v*num) : Math.round(v*num)) + suf;
     if(p < 1) requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
 }
-const cio = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.querySelectorAll('.i-num,.hstat-num,.rev-pct').forEach(animCount);
-      cio.unobserve(e.target);
+const cio = new IntersectionObserver(e => {
+  e.forEach(x => {
+    if(x.isIntersecting) {
+      x.target.querySelectorAll('.i-num,.hs-num,.rev-pct').forEach(animCount);
+      cio.unobserve(x.target);
     }
   });
 }, {threshold:0.5});
-document.querySelectorAll('.impact-grid,.hero-stats,.rev-grid').forEach(el => cio.observe(el));
+document.querySelectorAll('.imp-grid,.hero-stats,.rev-grid').forEach(el => cio.observe(el));
 </script>
 </body>
 </html>
- 
